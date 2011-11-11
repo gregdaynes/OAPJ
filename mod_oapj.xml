@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0">
+	<name>OAPJ</name>
+	<author>jEvolve</author>
+	<copyright>Copyright (C) jEvolve.net. All rights reserved.</copyright>
+	<creationDate>November 2010</creationDate>
+	<license>GNU General Public License</license>
+	<authorEmail>info@jevolve.net</authorEmail>
+	<authorUrl>http://www.jevolve.net</authorUrl>
+	<version></version>
+	<description>JEV_OAPJ_DESCRIPTION</description>
+	
+	<files>
+		<filename module="mod_oapj">mod_oapj.php</filename>
+		<filename>tmpl/block_button.php</filename>
+		<filename>tmpl/block_fullbanner.php</filename>
+		<filename>tmpl/block_leaderboard.php</filename>
+		<filename>tmpl/block_mediumrectangle.php</filename>
+		<filename>tmpl/block_skyscraper.php</filename>
+		
+		<filename>media/fx.elements.js</filename>
+		<filename>media/loop.js</filename>
+		<filename>media/slideshow.js</filename>
+		<filename>tmpl/placeholder_default.php</filename>
+		<filename>tmpl/placeholder_rotator.php</filename>
+		<filename>tmpl/placeholder_template_1.php</filename>
+		<filename>tmpl/placeholder_template_2.php</filename>
+		<filename>tmpl/placeholder_template_3.php</filename>
+		<filename>tmpl/placeholder_template_4.php</filename>
+		<filename>tmpl/placeholder_template_5.php</filename>
+	</files>
+	
+	<media destination="mod_oapj" folder="media">
+		<filename>fx.elements.js</filename>
+		<filename>loop.js</filename>
+		<filename>slideshow.js</filename>
+	</media>
+	
+	<languages>
+		<language tag="en-GB">en-GB.mod_oapj.ini</language>
+	</languages>
+	
+	<params>
+		<!-- General -->
+		<param name="mode" type="radio" label="JEV_OAPJ_MODE" default="0" description="JEV_OAPJ_MODE_DESCRIPTION">
+			<option value="0">Loader</option>
+			<option value="1">Placeholder</option>
+			<option value="2">Block</option>
+		</param>
+		
+		<param name="moduleclass_sfx"
+			type="text"
+			default=""
+			label="JEV_MOD_OAPJ_PLACEHOLDER_MODULE_CLASS_SUFFIX"
+			description="PARAMMODULECLASSSUFFIX" />
+			
+		<param name="width"
+			type="text"
+			default=""
+			label="JEV_MOD_OAPJ_PLACEHOLDER_WIDTH"
+			description="JEV_MOD_OAPJ_PLACEHOLDER_WIDTH_DESCRIPTION" />
+
+		<param name="height"
+			type="text"
+			default=""
+			label="JEV_MOD_OAPJ_PLACEHOLDER_HEIGHT"
+			description="JEV_MOD_OAPJ_PLACEHOLDER_HEIGHT_DESCRIPTION" />
+		
+		<!-- Block -->
+		<param name="type"
+			type="filelist"
+			label="JEV_OAPJ_ADVERTISEMENT_SIZE" 
+			description="JEV_OAPJ_ADVERTISEMENT_SIZE_DECSRIPTION" 
+			directory="/modules/mod_oapj/tmpl/block" 
+			default="default"
+			hide_default="1"
+			hide_none="1" 
+			stripext="1"
+			filter="\.php$"
+			exclude="^_" />
+		
+		<param name="id"
+			type="text"
+			default=""
+			label="JEV_OAPJ_BANNER_ID"
+			description="JEV_OAPJ_BANNER_ID_DESCRIPTION" />
+		
+		<param name="alt"
+			type="text"
+			default="" 
+			label="JEV_OAPJ_ALT_TEXT" 
+			description="JEV_OAPJ_ALT_TEXT_DESCRIPTION" />
+		
+		<!-- Placeholder -->
+		<param name="type"
+			type="filelist"
+			label="JEV_MOD_OAPJ_PLACEHOLDER_LAYOUT" 
+			description="JEV_MOD_OAPJ_PLACEHOLDER_LAYOUT" 
+			directory="/modules/mod_oapj/tmpl/placeholder" 
+			default="default"
+			hide_default="1"
+			hide_none="1" 
+			stripext="1"
+			filter="\.php$"
+			exclude="^_" />
+	
+		<param name="zonename"
+			type="text"
+			default=""
+			label="JEV_MOD_OAPJ_PLACEHOLDER_ZONE_NAME"
+			description="JEV_MOD_OAPJ_PLACEHOLDER_ZONE_NAME_DESCRIPTION" />
+
+		<param name="zoneid"
+			type="text"
+			default=""
+			label="JEV_MOD_OAPJ_PLACEHOLDER_ZONE_ID"
+			description="JEV_MOD_OAPJ_PLACEHOLDER_ZONE_ID_DESCRIPTION" />
+			
+		<!-- Loader -->
+		<param name="zones"
+			type="textarea"
+			rows="10"
+			cols="40"
+			default="unique_name|9"
+			label="JEV_MOD_OPENX_LOADER_ZONES"
+			description="JEV_MOD_OPENX_LOADER_ZONES_DESCRIPTION" />
+		
+	</params>
+	
+	<params group="advanced">
+		<!-- Block -->
+		<param name="ckurl"
+			type="text"
+			default="path/to/ck.php"
+			label="JEV_OAPJ_CK_PHP_URL"
+			description="JEV_OAPJ_CK_PHP_URL_DESCRIPTION" />
+			
+		<param name="avwurl"
+			type="text"
+			default="path/to/avw.php"
+			label="JEV_OAPJ_AVW_PHP_URL"
+			description="JEV_OAPJ_AVW_PHP_URL_DESCRIPTION" />
+			
+		<param name="ncode"
+			type="text"
+			default=""
+			label="JEV_OAPJ_NCODE"
+			description="JEV_OAPJ_NCODE_DESCRIPTION" />
+
+		<param name="spcjs"
+			type="text"
+			default="/path/to/spcjs.php"
+			label="JEV_MOD_OPENX_LOADER_SPCJS"
+			description="JEV_MOD_OPENX_LOADER_SPCJS_DESCRIPTION" />
+			
+		<param name="spcjsoptions"
+			type="text"
+			default=""
+			label="JEV_MOD_OPENX_LOADER_SPCJS_OPTIONS"
+			description="JEV_MOD_OPENX_LOADER_SPCJS_OPTIONS_DESCRIPTION" />
+	
+		<!-- Placeholder -->
+		<param name="zones"
+			type="textarea"
+			rows="10"
+			cols="40"
+			default="unique_name|9"
+			label="JEV_MOD_OAPJ_PLACEHOLDER_ZONES" 
+			description="JEV_MOD_OAPJ_PLACEHOLDER_ZONES_DESCRIPTION" />
+		
+		<param name="displaytime"
+			type="text"
+			default="5"
+			label="JEV_MOD_OAPJ_PLACEHOLDER_DISPLAY_TIME"
+			description="JEV_MOD_OAPJ_PLACEHOLDER_DISPLAY_TIME_DESCRIPTION" />
+			
+		<param name="transitiontime"
+			type="text"
+			default="0.25"
+			label="JEV_MOD_OAPJ_PLACEHOLDER_TRANSITION_TIME"
+			description="JEV_MOD_OAPJ_PLACEHOLDER_TRANSITION_TIME_DESCRIPTION" />
+			
+		<param name="autoplay"
+			type="radio"
+			default="1"
+			label="JEV_MOD_OAPJ_PLACEHOLDER_AUTOPLAY"
+			description="JEV_MOD_OAPJ_PLACEHOLDER_AUTOPLAY_DESCRIPTION" >
+			<option value="0">NO</option>
+			<option value="1">YES</option>
+			</param>
+		
+		<param name="transition"
+			type="list"
+			default="crossFade"
+			label="JEV_MOD_OAPJ_PLACEHOLDER_TRANSITION"
+			description="JEV_MOD_OAPJ_PLACEHOLDER_TRANSITION_DESCRIPTION">
+			<option value="none">NONE</option>
+			<option value="crossFade">CROSSFADE</option>
+			<option value="fadeThroughBackground">FADETHROUGHBACKGROUND</option>
+			<option value="pushLeft">PUSHLEFT</option>
+			<option value="pushRight">PUSHRIGHT</option>
+			<option value="pushUp">PUSHUP</option>
+			<option value="pushDown">PUSHDOWN</option>
+			<option value="blindRight">BLINDRIGHT</option>
+			<option value="blindLeft">BLINDLEFT</option>
+			<option value="blindLeftFade">BLINDLEFTFADE</option>
+			<option value="blindRightFade">BLINDRIGHTFADE</option>
+			</param>
+	</params>
+</install>
