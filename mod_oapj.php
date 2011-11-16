@@ -1,17 +1,15 @@
 <?php // no direct access
 defined('_JEXEC') or die('Restricted access');
 
-$mode = $params->get('general_mode', 'placeholder');
-
 require_once (dirname(__FILE__).DS.'helper.php');
 
-$oapjData = new modOAPJHelper($params);
-
+$oapjHelper = new modOAPJHelper($params);
+$mode = $params->get('general_mode', 'placeholder');
 $ncode = 'n='.$params->get('general_ncode', '');
 
 switch ($mode) {
 	case 'loader':
-		$zoneList = $oapjData->getList();
+		$zoneList = $oapjHelper->getList();
 		
 		if (!$zoneList) { echo '<!--'.JText::_('JEV_MOD_OAPJ_NO_ZONES_DEFINED').'-->'; return; }
 		
@@ -19,7 +17,7 @@ switch ($mode) {
 		break;
 	
 	case 'placeholder':
-		$zoneList = $oapjData->getList();
+		$zoneList = $oapjHelper->getList();
 		
 		if (!$zoneList) { echo '<!--'.JText::_('JEV_MOD_OAPJ_NO_ZONES_DEFINED').'-->'; return; }
 	
@@ -27,7 +25,7 @@ switch ($mode) {
 		break;
 
 	case 'block':
-		$banners = $oapjData->getBanners();
+		$banners = $oapjHelper->getBanners();
 		
 		require(JModuleHelper::getLayoutPath('mod_oapj', 'block'.DS.$params->get('block_type', 'mediumrectangle')));
 		break;

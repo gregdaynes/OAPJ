@@ -1,12 +1,4 @@
-<?php
-/**
- * @version	$Id: helper.php 330 2010-11-23 18:28:57Z jevolve $
- * @package	jEvolve.OpenX_Loader
- * @copyright  Copyright (C) 2010 jEvolve, LLC. All rights reserved.
- * @license	GNU General Public License
- */
- 
-// no direct access
+<?php // no direct access
 defined( '_JEXEC' ) or die( 'Restricted access' );
 
 class modOAPJHelper
