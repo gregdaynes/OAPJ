@@ -1,6 +1,4 @@
-<?php
- 
-// no direct access
+<?php // no direct access
 defined( '_JEXEC' ) or die( 'Restricted access' );
 
 $document = &JFactory::getDocument();
@@ -8,39 +6,35 @@ $document = &JFactory::getDocument();
 /**
  * Parameters
  */
-$zonename = $params->get('zonename');
-$ncode = 'n='.$params->get('ncode', ''); 
-$zones		= explode("\n", $params->get('zones'));
-$uniqueId	= 'id'.$evl->generateUniqueCode("5");
-$width		= $params->get('width');
-$height		= $params->get('height');
-$ckurl		= $params->get('ckurl');
-$avwurl		= $params->get('avwurl');
-$displaytime	= $params->get('displaytime', 5);
-$transitiontime	= $params->get('transitiontime', 0.25);
-$autoplay	= $params->get('autoplay', 1);
+$zoneList		= $zoneList->zoneList;
+
+$uniqueId		= 'id'.uniqid(rand(), false);
+$width			= $params->get('general_width');
+$height			= $params->get('general_height');
+$ckurl			= $params->get('general_ckurl');
+$avwurl			= $params->get('general_avwurl');
+$displaytime	= $params->get('placeholder_displaytime', 5);
+$transitiontime	= $params->get('placeholder_transitiontime', 0.25);
+$autoplay		= $params->get('placeholder_autoplay', 1);
 if ($autoplay == 1) { $autoplay = "true"; } else { $autoplay = "false"; }
-$transition	= $params->get('transition', 'crossFade');
+$transition		= $params->get('placeholder_transition', 'crossFade');
 
-$noscript = rand(0, count($zones) -1); // get random zome
-$noscript = explode('|',$zones[$noscript]); // get zone id
-$noscript = $noscript[1];
+$noscript = rand(0, count($zoneList) -1); // int // get random zome
+$noscript = $noscript['id']; // get zone id
 
-JHTML::script('fx.elements.js', 'media/mod_openx_placeholder/');
-JHTML::script('loop.js', 'media/mod_openx_placeholder/');
-JHTML::script('slideshow.js', 'media/mod_openx_placeholder/'); 
-
-?>
+JHTML::_('behavior.mootools');
+JHTML::script('fx.elements.js', 'media/mod_oapj/');
+JHTML::script('loop.js', 'media/mod_oapj/');
+JHTML::script('slideshow.js', 'media/mod_oapj/'); ?>
 
 <div id="<?php echo $uniqueId; ?>" class="<?php echo $params->get('moduleclass_sfx'); ?>">
 	<div class="mask" style="display: none;">
 		<ul class="ads">
 			<?php
 				$i=1;
-				foreach($zones as $zone) { 
-					$tmp = explode('|', trim($zone));
-					$zonename = $tmp[0];
-					$zoneid = $tmp[1]; ?>
+				foreach($zoneList as $zoneAd) { 
+					$zonename = $zoneAd['name'];
+					$zoneid = $zoneAd['id']; ?>
 					<li id="z-<?php echo $zonename; ?>"></li>
 				<?php $i++; }
 			?>
@@ -48,7 +42,7 @@ JHTML::script('slideshow.js', 'media/mod_openx_placeholder/');
 	</div>
 	<ul class="controls" style="display: none;">
 		<?php
-		for($i=1; $i<=count($zones); $i++) { ?>
+		for($i=1; $i<=count($zoneList); $i++) { ?>
 			<li>&bull;</li>
 		<?php } ?>
 	</ul>
@@ -99,7 +93,7 @@ JHTML::script('slideshow.js', 'media/mod_openx_placeholder/');
 	});
 </script>
 <noscript>
-	<a target='_blank' href='<?php echo $params->get('ckurl').'?'.$ncode;?>'>
-		<img style="border: 0;" alt='advertisment <?php echo $zonename; ?>' src='<?php echo $params->get('avwurl').'?zoneid='.$noscript.'&amp;'.$ncode; ?>' />
+	<a target='_blank' href='<?php echo $params->get('general_ckurl').'?'.$ncode;?>'>
+		<img style="border: 0;" src='<?php echo $params->get('general_avwurl').'?zoneid='.$noscript.'&amp;'.$ncode; ?>' />
 	</a>
 </noscript>

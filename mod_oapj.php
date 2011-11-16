@@ -13,7 +13,7 @@ switch ($mode) {
 	case 'loader':
 		$zoneList = $oapjData->getList();
 		
-		if (!$zoneList) { return; }
+		if (!$zoneList) { echo '<!--'.JText::_('JEV_MOD_OAPJ_NO_ZONES_DEFINED').'-->'; return; }
 		
 		require(JModuleHelper::getLayoutPath('mod_oapj', 'loader'.DS.'loader'));
 		break;
@@ -21,7 +21,7 @@ switch ($mode) {
 	case 'placeholder':
 		$zoneList = $oapjData->getList();
 		
-		if (!$zoneList) { return; }
+		if (!$zoneList) { echo '<!--'.JText::_('JEV_MOD_OAPJ_NO_ZONES_DEFINED').'-->'; return; }
 	
 		require(JModuleHelper::getLayoutPath('mod_oapj', 'placeholder'.DS.$params->get('placeholder_type', 'default')));
 		break;

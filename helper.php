@@ -48,21 +48,24 @@ class modOAPJHelper
 	
 	function getList()
 	{	
+		$zones = $this->getParam('pl_zones');
+		$zones = explode("\n", trim($zones));
 		
-//		$zones = $this->_params->get('zones');
-//		$zones = explode("\n", trim($zones));
-//		
-//		foreach ($zones as $index=>$zone) {
-//			$zone = trim($zone);
-//			$zone = explode('|', $zone); 
-//			
-//			$zoneList[] = $zone[0];
-//			$zones[$zone[0]] = $zone[1];
-//			unset($zones[$index]);
-//		}
-//		
-//		$this->oa_zones = 'var OA_zones = '.json_encode($zones).';';
-//		
-//		return $zoneList;
+		$this->oapj->zoneList = null;
+		
+		foreach ($zones as $index=>$zone) {
+			$zone = trim($zone);
+			$zone = explode('|', $zone); 
+			
+			$this->oapj->zoneList[$index]['name'] = $zone[0]; // zone name
+			$this->oapj->zoneList[$index]['id'] = $zone[1]; // zone id
+			
+			$zones[$zone[0]] = $zone[1];
+			unset($zones[$index]);
+		}
+		
+		$this->oapj->oa_zones = 'var OA_zones = '.json_encode($zones).';';
+		
+		return $this->oapj;
 	}
 }

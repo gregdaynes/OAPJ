@@ -3,8 +3,8 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 
 $document = &JFactory::getDocument();
 
-$scriptSrc	= $params->get('spcjs', false);
-$scriptOptions	= $params->get('spcjsoptions', '');
+$scriptSrc	= $params->get('general_spcjs', false);
+$scriptOptions	= $params->get('general_spcjsoptions', '');
 
 if ($scriptSrc) {
 	// replace proper amps with improper - then replace with proper
@@ -16,13 +16,13 @@ if ($scriptSrc) {
 } ?> 
 
 <script type="text/javascript">
-	<?php echo $this->oa_zones; ?>
+	<?php echo $zoneList->oa_zones; ?>
 	window.addEvent('domready', function() {
 		var adholder = $('adHolder');
 		
 		adholder.getChildren().each(function(el, i) {
 			
-			id = el.get('id');
+			id = el.getProperty('id');
 			if ($('z-'+id)) {
 				$('z-'+id).adopt(el);
 			}
@@ -33,9 +33,9 @@ if ($scriptSrc) {
 <script src="<?php echo $scriptSrc; ?>" type="text/javascript"></script>
 
 <div id="adHolder" style="display: none;">
-	<?php foreach ($zoneList as $zone ) { ?>
-		<div id="<?php echo $zone; ?>">
-			<script>OA_show('<?php echo $zone; ?>');</script>
+	<?php foreach ($zoneList->zoneList as $zone ) { ?>
+		<div id="<?php echo $zone['name']; ?>">
+			<script>OA_show('<?php echo $zone['name']; ?>');</script>
 		</div>
 	<?php } ?>
 </div>
