@@ -1,12 +1,4 @@
-<?php
-/**
- * @version	$Id: default.php 490 2011-01-12 00:19:45Z jevolve $
- * @package	jEvolve.OpenX_Loader
- * @copyright  Copyright (C) 2010 jEvolve, LLC. All rights reserved.
- * @license	GNU General Public License
- */
- 
-// no direct access
+<?php // no direct access
 defined( '_JEXEC' ) or die( 'Restricted access' );
 
 $document = &JFactory::getDocument();

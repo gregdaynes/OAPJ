@@ -40,34 +40,36 @@
 		<language tag="en-GB">en-GB.mod_oapj.ini</language>
 	</languages>
 	
-	<params>
+	<params addPath="/modules/mod_oapj/elements">
+		<param type="loadjs" />
+		
 		<!-- General -->
-		<param name="mode" type="radio" label="JEV_OAPJ_MODE" default="0" description="JEV_OAPJ_MODE_DESCRIPTION">
-			<option value="0">Loader</option>
-			<option value="1">Placeholder</option>
-			<option value="2">Block</option>
+		<param name="general_mode" type="list" label="JEV_OAPJ_MODE" default="0" description="JEV_OAPJ_MODE_DESCRIPTION">
+			<option value="loader">Loader</option>
+			<option value="placeholder">Placeholder</option>
+			<option value="block">Block</option>
 		</param>
 		
-		<param name="moduleclass_sfx"
+		<param name="general_moduleclass_sfx"
 			type="text"
 			default=""
-			label="JEV_MOD_OAPJ_PLACEHOLDER_MODULE_CLASS_SUFFIX"
+			label="JEV_MOD_OAPJ_MODULE_CLASS_SUFFIX"
 			description="PARAMMODULECLASSSUFFIX" />
 			
-		<param name="width"
+		<param name="general_width"
 			type="text"
 			default=""
-			label="JEV_MOD_OAPJ_PLACEHOLDER_WIDTH"
-			description="JEV_MOD_OAPJ_PLACEHOLDER_WIDTH_DESCRIPTION" />
+			label="JEV_MOD_OAPJ_WIDTH"
+			description="JEV_MOD_OAPJ_WIDTH_DESCRIPTION" />
 
-		<param name="height"
+		<param name="general_height"
 			type="text"
 			default=""
-			label="JEV_MOD_OAPJ_PLACEHOLDER_HEIGHT"
-			description="JEV_MOD_OAPJ_PLACEHOLDER_HEIGHT_DESCRIPTION" />
+			label="JEV_MOD_OAPJ_HEIGHT"
+			description="JEV_MOD_OAPJ_HEIGHT_DESCRIPTION" />
 		
 		<!-- Block -->
-		<param name="type"
+		<param name="block_type"
 			type="filelist"
 			label="JEV_OAPJ_ADVERTISEMENT_SIZE" 
 			description="JEV_OAPJ_ADVERTISEMENT_SIZE_DECSRIPTION" 
@@ -79,23 +81,23 @@
 			filter="\.php$"
 			exclude="^_" />
 		
-		<param name="id"
+		<param name="block_id"
 			type="text"
 			default=""
 			label="JEV_OAPJ_BANNER_ID"
 			description="JEV_OAPJ_BANNER_ID_DESCRIPTION" />
 		
-		<param name="alt"
+		<param name="block_alt"
 			type="text"
 			default="" 
 			label="JEV_OAPJ_ALT_TEXT" 
 			description="JEV_OAPJ_ALT_TEXT_DESCRIPTION" />
 		
 		<!-- Placeholder -->
-		<param name="type"
+		<param name="placeholder_type"
 			type="filelist"
-			label="JEV_MOD_OAPJ_PLACEHOLDER_LAYOUT" 
-			description="JEV_MOD_OAPJ_PLACEHOLDER_LAYOUT" 
+			label="JEV_MOD_OAPJ_PLACEHOLDER_TYPE" 
+			description="JEV_MOD_OAPJ_PLACEHOLDER_TYPE" 
 			directory="/modules/mod_oapj/tmpl/placeholder" 
 			default="default"
 			hide_default="1"
@@ -103,84 +105,62 @@
 			stripext="1"
 			filter="\.php$"
 			exclude="^_" />
-	
-		<param name="zonename"
-			type="text"
-			default=""
-			label="JEV_MOD_OAPJ_PLACEHOLDER_ZONE_NAME"
-			description="JEV_MOD_OAPJ_PLACEHOLDER_ZONE_NAME_DESCRIPTION" />
-
-		<param name="zoneid"
-			type="text"
-			default=""
-			label="JEV_MOD_OAPJ_PLACEHOLDER_ZONE_ID"
-			description="JEV_MOD_OAPJ_PLACEHOLDER_ZONE_ID_DESCRIPTION" />
 			
-		<!-- Loader -->
-		<param name="zones"
+		<!-- Placeholder / Loader -->
+		<param name="pl_zones"
 			type="textarea"
 			rows="10"
 			cols="40"
 			default="unique_name|9"
-			label="JEV_MOD_OPENX_LOADER_ZONES"
-			description="JEV_MOD_OPENX_LOADER_ZONES_DESCRIPTION" />
+			label="JEV_MOD_OAPJ_LOADER_ZONES"
+			description="JEV_MOD_OAPJ_LOADER_ZONES_DESCRIPTION" />
 		
-	</params>
-	
-	<params group="advanced">
+
 		<!-- Block -->
-		<param name="ckurl"
+		<param name="general_ckurl"
 			type="text"
 			default="path/to/ck.php"
 			label="JEV_OAPJ_CK_PHP_URL"
 			description="JEV_OAPJ_CK_PHP_URL_DESCRIPTION" />
 			
-		<param name="avwurl"
+		<param name="general_avwurl"
 			type="text"
 			default="path/to/avw.php"
 			label="JEV_OAPJ_AVW_PHP_URL"
 			description="JEV_OAPJ_AVW_PHP_URL_DESCRIPTION" />
 			
-		<param name="ncode"
+		<param name="general_ncode"
 			type="text"
 			default=""
 			label="JEV_OAPJ_NCODE"
 			description="JEV_OAPJ_NCODE_DESCRIPTION" />
 
-		<param name="spcjs"
+		<param name="general_spcjs"
 			type="text"
 			default="/path/to/spcjs.php"
-			label="JEV_MOD_OPENX_LOADER_SPCJS"
-			description="JEV_MOD_OPENX_LOADER_SPCJS_DESCRIPTION" />
+			label="JEV_MOD_OAPJ_LOADER_SPCJS"
+			description="JEV_MOD_OAPJ_LOADER_SPCJS_DESCRIPTION" />
 			
-		<param name="spcjsoptions"
+		<param name="general_spcjsoptions"
 			type="text"
 			default=""
-			label="JEV_MOD_OPENX_LOADER_SPCJS_OPTIONS"
-			description="JEV_MOD_OPENX_LOADER_SPCJS_OPTIONS_DESCRIPTION" />
+			label="JEV_MOD_OAPJ_LOADER_SPCJS_OPTIONS"
+			description="JEV_MOD_OAPJ_LOADER_SPCJS_OPTIONS_DESCRIPTION" />
 	
-		<!-- Placeholder -->
-		<param name="zones"
-			type="textarea"
-			rows="10"
-			cols="40"
-			default="unique_name|9"
-			label="JEV_MOD_OAPJ_PLACEHOLDER_ZONES" 
-			description="JEV_MOD_OAPJ_PLACEHOLDER_ZONES_DESCRIPTION" />
-		
-		<param name="displaytime"
+		<!-- Placeholder -->		
+		<param name="placeholder_displaytime"
 			type="text"
 			default="5"
 			label="JEV_MOD_OAPJ_PLACEHOLDER_DISPLAY_TIME"
 			description="JEV_MOD_OAPJ_PLACEHOLDER_DISPLAY_TIME_DESCRIPTION" />
 			
-		<param name="transitiontime"
+		<param name="placeholder_transitiontime"
 			type="text"
 			default="0.25"
 			label="JEV_MOD_OAPJ_PLACEHOLDER_TRANSITION_TIME"
 			description="JEV_MOD_OAPJ_PLACEHOLDER_TRANSITION_TIME_DESCRIPTION" />
 			
-		<param name="autoplay"
+		<param name="placeholder_autoplay"
 			type="radio"
 			default="1"
 			label="JEV_MOD_OAPJ_PLACEHOLDER_AUTOPLAY"
@@ -189,7 +169,7 @@
 			<option value="1">YES</option>
 			</param>
 		
-		<param name="transition"
+		<param name="placeholder_transition"
 			type="list"
 			default="crossFade"
 			label="JEV_MOD_OAPJ_PLACEHOLDER_TRANSITION"

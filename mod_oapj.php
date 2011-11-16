@@ -1,37 +1,34 @@
-<?php
-/**
- * @version		$Id: mod_adblock.php 312 2010-11-22 23:23:15Z jevolve $
- * @package		jEvolve.mod_adblock
- * @copyright	Copyright (C) 2010 jEvolve.net. All rights reserved.
- * @license		GNU General Public License
- * @link		http://jevolve.net
- */
-
-// no direct access
+<?php // no direct access
 defined('_JEXEC') or die('Restricted access');
 
-$mode = $params->get('mode', 0);
+$mode = $params->get('general_mode', 'placeholder');
+
+require_once (dirname(__FILE__).DS.'helper.php');
+
+$oapjData = new modOAPJHelper($params);
+
+$ncode = 'n='.$params->get('general_ncode', '');
 
 switch ($mode) {
-	case 0:
-		// Include the syndicate functions only once
-		require_once (dirname(__FILE__).DS.'helper.php');
+	case 'loader':
+		$zoneList = $oapjData->getList();
 		
-		$zoneList = modOpenXLoaderHelper::getList($params);
-		
-		if (!$zoneList) {
-			return;
-		}
+		if (!$zoneList) { return; }
 		
 		require(JModuleHelper::getLayoutPath('mod_oapj', 'loader'.DS.'loader'));
 		break;
 	
-	case 1:
-		require(JModuleHelper::getLayoutPath('mod_oapj', 'placeholder'.DS.$params->get('type', 'placeholder_mediumrectangle')));
+	case 'placeholder':
+		$zoneList = $oapjData->getList();
+		
+		if (!$zoneList) { return; }
+	
+		require(JModuleHelper::getLayoutPath('mod_oapj', 'placeholder'.DS.$params->get('placeholder_type', 'default')));
 		break;
 
-	case 2:
-		require(JModuleHelper::getLayoutPath('mod_oapj', $params->get('type', 'block_mediumrectangle')));
+	case 'block':
+		$banners = $oapjData->getBanners();
+		
+		require(JModuleHelper::getLayoutPath('mod_oapj', 'block'.DS.$params->get('block_type', 'mediumrectangle')));
 		break;
 }
-
