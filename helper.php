@@ -3,33 +3,17 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 
 class modOAPJHelper
 {
-	public $_params;
+	public $oapj;
 
 	function __construct($params)
 	{
 		$this->oapj = new JObject();
-		$this->oapj->_params = $params;
 	}
 	
-	function getParam($data, $default = null)
+	function getBanners($params)
 	{
-		$param = null; // initial
-		
-		$params = $this->oapj->_params; // get params
-		
-		$param = $params->_registry['_default']['data']->$data; // get specific params
-		
-		if ($param == null) {
-			return $default; // return default if no params
-		}
-		
-		return $param;
-	}
-	
-	function getBanners()
-	{
-		$adIds		= explode('|', $this->getParam('block_id'));
-		$alts		= explode('|', $this->getParam('block_alt'));
+		$adIds		= explode('|', $params->get('block_id'));
+		$alts		= explode('|', $params->get('block_alt'));
 		
 		$this->oapj->data = new JObject();
 		$this->oapj->data->adIds = $adIds;
@@ -38,9 +22,9 @@ class modOAPJHelper
 		return $this->oapj->data;
 	}
 	
-	function getList()
+	function getList($params)
 	{	
-		$zones = $this->getParam('pl_zones');
+		$zones = $params->get('pl_zones');
 		$zones = explode("\n", trim($zones));
 		
 		$this->oapj->zoneList = null;

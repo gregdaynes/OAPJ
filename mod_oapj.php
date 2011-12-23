@@ -9,7 +9,7 @@ $ncode = 'n='.$params->get('general_ncode', '');
 
 switch ($mode) {
 	case 'loader':
-		$zoneList = $oapjHelper->getList();
+		$zoneList = $oapjHelper->getList($params);
 		
 		if (!$zoneList) { echo '<!--'.JText::_('JEV_MOD_OAPJ_NO_ZONES_DEFINED').'-->'; return; }
 		
@@ -17,7 +17,7 @@ switch ($mode) {
 		break;
 	
 	case 'placeholder':
-		$zoneList = $oapjHelper->getList();
+		$zoneList = $oapjHelper->getList($params);
 		
 		if (!$zoneList) { echo '<!--'.JText::_('JEV_MOD_OAPJ_NO_ZONES_DEFINED').'-->'; return; }
 	
@@ -25,7 +25,7 @@ switch ($mode) {
 		break;
 
 	case 'block':
-		$banners = $oapjHelper->getBanners();
+		$banners = $oapjHelper->getBanners($params);
 		
 		require(JModuleHelper::getLayoutPath('mod_oapj', 'block'.DS.$params->get('block_type', 'mediumrectangle')));
 		break;
