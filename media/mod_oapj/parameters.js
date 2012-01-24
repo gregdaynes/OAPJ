@@ -23,7 +23,8 @@ window.addEvent('domready', function() {
 			} 
 			
 			if (field.id.contains('jform_params_'+currentMode) ||
-			    field.id.contains('jform_params_general')) {
+			    field.id.contains('jform_params_general') ||
+			    field.id.contains('jform_params_moduleclass_')) {
 					return false;
 			}
 			

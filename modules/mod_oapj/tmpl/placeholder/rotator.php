@@ -27,7 +27,7 @@ JHTML::script('fx.elements.js', 'media/mod_oapj/');
 JHTML::script('loop.js', 'media/mod_oapj/');
 JHTML::script('slideshow.js', 'media/mod_oapj/'); ?>
 
-<div id="<?php echo $uniqueId; ?>" class="<?php echo $params->get('moduleclass_sfx'); ?>">
+<div id="<?php echo $uniqueId; ?>" class="<?php echo $params->get('general_moduleclass_sfx'); ?>">
 	<div class="mask" style="display: none;">
 		<ul class="ads">
 			<?php

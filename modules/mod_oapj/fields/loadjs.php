@@ -27,7 +27,7 @@ class JFormFieldLoadjs extends JFormField
 	 {
 	 
 		 // Output
-		 return '<script src="../modules/mod_oapj/media/parameters.js"></script>';
+		 return '<script src="../media/mod_oapj/parameters.js"></script>';
 	 
 	 }
 }

@@ -65,6 +65,7 @@ var SlideShow = new Class({
 	
 	storeTransition: function(slide){
 		var classes = slide.get('class');
+		classes = 'crossFade';
 		var transitionRegex = /transition:[a-zA-Z]+/;
 		var durationRegex = /duration:[0-9]+/;
 		var transition = (classes.match(transitionRegex)) ? classes.match(transitionRegex)[0].split(':')[1] : this.options.transition;

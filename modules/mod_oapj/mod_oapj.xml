@@ -58,7 +58,7 @@
 					<option value="block">Block</option>
 				</field>
 				
-				<field name="general_moduleclass_sfx"
+				<field name="moduleclass_sfx"
 					type="text"
 					default=""
 					label="JEV_MOD_OAPJ_MODULE_CLASS_SUFFIX"
